@@ -1170,11 +1170,6 @@ public class XFormParser implements IXFormParserFunctions {
             }
         }
 
-        boolean isItem =
-            controlType == CONTROL_SELECT_MULTI
-                || controlType == CONTROL_RANK
-                || controlType == CONTROL_SELECT_ONE;
-
         question.setControlType(controlType);
         question.setAppearanceAttr(e.getAttributeValue(null, APPEARANCE_ATTR));
 
@@ -1187,15 +1182,16 @@ public class XFormParser implements IXFormParserFunctions {
                 parseQuestionLabel(question, child);
             } else if ("hint".equals(childName)) {
                 parseHint(question, child);
-            } else if (isItem && "item".equals(childName)) {
+            } else if ((hasRequiredItems(controlType) || hasOptionalItems(controlType)) && "item".equals(childName)) {
                 parseItem(question, child);
-            } else if (isItem && "itemset".equals(childName)) {
+            } else if ((hasRequiredItems(controlType) || hasOptionalItems(controlType)) && "itemset".equals(childName)) {
                 parseItemset(question, child, parent);
             } else if (actionHandlers.containsKey(childName)) {
                 actionHandlers.get(childName).handle(this, child, question);
             }
         }
-        if (isItem) {
+
+        if (hasRequiredItems(controlType)) {
             if (question.getNumChoices() > 0 && question.getDynamicChoices() != null) {
                 throw new XFormParseException("Select question contains both literal choices and <itemset>");
             } else if (question.getNumChoices() == 0 && question.getDynamicChoices() == null) {
@@ -1213,6 +1209,16 @@ public class XFormParser implements IXFormParserFunctions {
 
         questionProcessors.stream().forEach(questionProcessor -> questionProcessor.processQuestion(question));
         return question;
+    }
+
+    private static boolean hasRequiredItems(int controlType) {
+        return controlType == CONTROL_SELECT_MULTI
+                || controlType == CONTROL_RANK
+                || controlType == CONTROL_SELECT_ONE;
+    }
+
+    private static boolean hasOptionalItems(int controlType) {
+        return controlType == CONTROL_RANGE;
     }
 
     private QuestionDef questionForControlType(int controlType) {
