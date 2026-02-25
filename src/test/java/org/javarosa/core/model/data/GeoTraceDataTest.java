@@ -56,4 +56,14 @@ public class GeoTraceDataTest {
             )))).hashCode())
         );
     }
+
+    @Test
+    public void getDisplayText_returnsSemicolonSeparatedPoints() {
+        GeoTraceData data = new GeoTraceData(new GeoTraceData.GeoTrace(Arrays.asList(
+            new double[]{1.0, 1.0, 0.0, 0.0},
+            new double[]{2.0, 2.0, 0.0, 0.0}
+        )));
+
+        assertThat(data.getDisplayText(), equalTo("1.0 1.0 0.0 0.0;2.0 2.0 0.0 0.0"));
+    }
 }
