@@ -55,4 +55,14 @@ public class GeoShapeDataTest {
             )))).hashCode())
         );
     }
+
+    @Test
+    public void getDisplayText_returnsSemicolonSeparatedPoints() {
+        GeoShapeData data = new GeoShapeData(new GeoShapeData.GeoShape(Arrays.asList(
+            new double[]{1.0, 1.0, 0.0, 0.0},
+            new double[]{2.0, 2.0, 0.0, 0.0}
+        )));
+
+        assertThat(data.getDisplayText(), equalTo("1.0 1.0 0.0 0.0;2.0 2.0 0.0 0.0"));
+    }
 }

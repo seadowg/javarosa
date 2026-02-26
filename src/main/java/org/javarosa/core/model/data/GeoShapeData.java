@@ -96,7 +96,7 @@ public class GeoShapeData implements IAnswerData, IExprDataType {
         boolean first = true;
         for ( GeoPointData p : points ) {
             if ( !first ) {
-                b.append("; ");
+                b.append(";");
             }
             first = false;
             b.append(p.getDisplayText());
