@@ -17,6 +17,8 @@ public class RangeQuestion extends QuestionDef {
     private BigDecimal rangeStart;
     private BigDecimal rangeEnd;
     private BigDecimal rangeStep;
+    private BigDecimal tickInterval;
+    private BigDecimal placeholder;
 
     public void setRangeStart(BigDecimal rangeStart) {
         this.rangeStart = rangeStart;
@@ -42,12 +44,30 @@ public class RangeQuestion extends QuestionDef {
         return rangeStep;
     }
 
+    public void setTickInterval(BigDecimal tickInterval) {
+        this.tickInterval = tickInterval;
+    }
+
+    public BigDecimal getTickInterval() {
+        return tickInterval;
+    }
+
+    public void setPlaceholder(BigDecimal placeholder) {
+        this.placeholder = placeholder;
+    }
+
+    public BigDecimal getPlaceholder() {
+        return placeholder;
+    }
+
     @Override
     public void readExternal(DataInputStream dis, PrototypeFactory pf) throws IOException, DeserializationException {
         super.readExternal(dis, pf);
         rangeStart = RangeParser.getDecimalValue((String) ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
         rangeEnd = RangeParser.getDecimalValue((String) ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
         rangeStep = RangeParser.getDecimalValue((String) ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
+        tickInterval = RangeParser.getDecimalValue((String) ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
+        placeholder = RangeParser.getDecimalValue((String) ExtUtil.read(dis, new ExtWrapNullable(String.class), pf));
     }
 
     @Override
@@ -56,5 +76,7 @@ public class RangeQuestion extends QuestionDef {
         ExtUtil.write(dos, new ExtWrapNullable(rangeStart != null ? rangeStart.toString() : null));
         ExtUtil.write(dos, new ExtWrapNullable(rangeEnd != null ? rangeEnd.toString() : null));
         ExtUtil.write(dos, new ExtWrapNullable(rangeStep != null ? rangeStep.toString() : null));
+        ExtUtil.write(dos, new ExtWrapNullable(tickInterval != null ? tickInterval.toString() : null));
+        ExtUtil.write(dos, new ExtWrapNullable(placeholder != null ? placeholder.toString() : null));
     }
 }
