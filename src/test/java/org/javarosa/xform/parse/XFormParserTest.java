@@ -254,7 +254,7 @@ public class XFormParserTest {
         assertEquals(2.0d, question.getRangeEnd().doubleValue(), 0);
         assertEquals(0.5d, question.getRangeStep().doubleValue(), 0);
         assertEquals(2.0d, question.getTickInterval().doubleValue(), 0);
-        assertEquals(0.0d, question.getPlaceholder().doubleValue(), 0);
+        assertEquals(1.0d, question.getPlaceholder().doubleValue(), 0);
 
         FormEntryModel formEntryModel = new FormEntryModel(formDef);
         FormEntryController formEntryController = new FormEntryController(formEntryModel);
