@@ -7,8 +7,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.javarosa.core.test.AnswerDataMatchers.intAnswer;
 import static org.javarosa.test.BindBuilderXFormsElement.bind;
-import static org.javarosa.test.XFormsElement.*;
+import static org.javarosa.test.XFormsElement.body;
+import static org.javarosa.test.XFormsElement.head;
+import static org.javarosa.test.XFormsElement.html;
+import static org.javarosa.test.XFormsElement.instance;
+import static org.javarosa.test.XFormsElement.item;
+import static org.javarosa.test.XFormsElement.mainInstance;
+import static org.javarosa.test.XFormsElement.model;
 import static org.javarosa.test.XFormsElement.t;
+import static org.javarosa.test.XFormsElement.title;
 
 public class RangeQuestionTest {
     @Test
