@@ -99,8 +99,8 @@ public class SelectOneChoiceFilterTest {
         assertThat(scenario.choicesOf("/data/level2"), empty());
         assertThat(scenario.choicesOf("/data/level3"), empty());
 
-        scenario.answer("/data/level1", "a");
-        scenario.answer("/data/level2", "aa");
+        scenario.answer("/data/level1", scenario.choicesOf("/data/level1").get(0));
+        scenario.answer("/data/level2", scenario.choicesOf("/data/level2").get(0));
         assertThat(scenario.choicesOf("/data/level3"), containsInAnyOrder(
             choice("aaa"),
             choice("aab")));
@@ -119,9 +119,9 @@ public class SelectOneChoiceFilterTest {
         assertThat(scenario.answerOf("/data/level2"), nullValue());
         assertThat(scenario.answerOf("/data/level3"), nullValue());
 
-        scenario.answer("/data/level1", "a");
-        scenario.answer("/data/level2", "aa");
-        scenario.answer("/data/level3", "aab");
+        scenario.answer("/data/level1", scenario.choicesOf("/data/level1").get(0));
+        scenario.answer("/data/level2", scenario.choicesOf("/data/level2").get(0));
+        scenario.answer("/data/level3", scenario.choicesOf("/data/level3").get(0));
 
         scenario.answer("/data/level1", "");
 
@@ -144,14 +144,14 @@ public class SelectOneChoiceFilterTest {
     public void changingValueAtLevel2_ShouldClearLevel3_IfChoiceNoLongerAvailable() {
         scenario.newInstance();
 
-        scenario.answer("/data/level1_contains", "a");
-        scenario.answer("/data/level2_contains", "aa");
+        scenario.answer("/data/level1_contains", scenario.choicesOf("/data/level1_contains").get(0));
+        scenario.answer("/data/level2_contains", scenario.choicesOf("/data/level2_contains").get(0));
         assertThat(scenario.choicesOf("/data/level3_contains"), containsInAnyOrder(
             choice("aaa"),
             choice("aab"),
             choice("baa")));
-        scenario.answer("/data/level3_contains", "aaa");
-        scenario.answer("/data/level2_contains", "ab");
+        scenario.answer("/data/level3_contains", scenario.choicesOf("/data/level3_contains").get(0));
+        scenario.answer("/data/level2_contains", scenario.choicesOf("/data/level2_contains").get(1));
         assertThat(scenario.choicesOf("/data/level3_contains"), containsInAnyOrder(
             choice("aab"),
             choice("bab")));
