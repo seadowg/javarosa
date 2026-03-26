@@ -2,9 +2,7 @@ package org.javarosa.core.model;
 
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.condition.IConditionExpr;
-import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
-import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.core.model.data.MultipleItemsData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
@@ -257,12 +255,8 @@ public class ItemsetBinding implements Externalizable, Localizable {
      */
     private void updateQuestionAnswerInModel(FormDef formDef, TreeReference curQRef, Map<String, SelectChoice> selectChoicesForAnswer) {
         IAnswerData originalValue = formDef.getMainInstance().resolveReference(curQRef).getValue();
-        if (originalValue instanceof IntegerData || originalValue instanceof DecimalData) {
-            // Do not perform any updates for RangeQuestion with choices
-            return;
-        }
-        
-        if (selectChoicesForAnswer != null) {
+
+        if (originalValue instanceof MultipleItemsData || originalValue instanceof SelectOneData) {
             IAnswerData boundAndFilteredValue;
             if (originalValue instanceof MultipleItemsData) {
                 boundAndFilteredValue = getFilteredAndBoundSelections((MultipleItemsData) originalValue, selectChoicesForAnswer);
