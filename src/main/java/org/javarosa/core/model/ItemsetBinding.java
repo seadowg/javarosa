@@ -256,7 +256,7 @@ public class ItemsetBinding implements Externalizable, Localizable {
     private void updateQuestionAnswerInModel(FormDef formDef, TreeReference curQRef, Map<String, SelectChoice> selectChoicesForAnswer) {
         IAnswerData originalValue = formDef.getMainInstance().resolveReference(curQRef).getValue();
 
-        if (selectChoicesForAnswer != null) {
+        if (originalValue instanceof MultipleItemsData || originalValue instanceof SelectOneData) {
             IAnswerData boundAndFilteredValue;
             if (originalValue instanceof MultipleItemsData) {
                 boundAndFilteredValue = getFilteredAndBoundSelections((MultipleItemsData) originalValue, selectChoicesForAnswer);

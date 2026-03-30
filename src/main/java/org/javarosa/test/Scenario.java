@@ -601,6 +601,13 @@ public class Scenario {
         return answer(new SelectOneData(choice.selection()));
     }
 
+    public AnswerResult answer(String xPath, SelectChoice choice) {
+        createMissingRepeats(xPath);
+        TreeReference ref = getRef(xPath);
+        silentJump(getIndexOf(ref));
+        return answer(new SelectOneData(choice.selection()));
+    }
+
     /**
      * Answers the question at the form index
      */
