@@ -20,11 +20,11 @@ import static org.javarosa.test.XFormsElement.title;
 public class RangeQuestionTest {
     @Test
     public void answerIsPreservedWhenRangeQuestionHasIncompleteChoices() throws Exception {
-        Scenario scenario = Scenario.init("indefinite repeat", html(
+        Scenario scenario = Scenario.init("range question with incomplete choices", html(
             head(
-                title("Indefinite repeat"),
+                title("Range question with incomplete choices"),
                 model(
-                    mainInstance(t("data id=\"indefinite-repeat\"",
+                    mainInstance(t("data id=\"range-question-with-incomplete-choices\"",
                         t("range")
                     )),
 
