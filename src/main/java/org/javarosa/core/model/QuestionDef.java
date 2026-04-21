@@ -16,16 +16,10 @@
 
 package org.javarosa.core.model;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.javarosa.core.model.actions.ActionController;
 import org.javarosa.core.model.instance.TreeElement;
-import org.javarosa.core.model.utils.DateUtils;
 import org.javarosa.core.model.osm.OSMTag;
+import org.javarosa.core.model.utils.DateUtils;
 import org.javarosa.core.services.locale.Localizable;
 import org.javarosa.core.services.locale.Localizer;
 import org.javarosa.core.util.externalizable.DeserializationException;
@@ -36,6 +30,12 @@ import org.javarosa.core.util.externalizable.ExtWrapTagged;
 import org.javarosa.core.util.externalizable.PrototypeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The definition of a Question to be presented to users when
@@ -236,6 +236,20 @@ public class QuestionDef implements IFormElement, Localizable {
      */
     public boolean isComplex () {
         return (dynamicChoices != null && dynamicChoices.copyMode);
+    }
+
+    /**
+     * For select one and select multiple questions, answers must correspond to valid {@link SelectChoice}s. Any answer
+     * values not present in the current choice list should be removed. See {@link ItemsetBinding}.
+     *
+     * <p>Non-select controls (e.g., range) may use items for other purposes and their values are not limited by the
+     * itemset.
+     *
+     * @return true if answers should be limited to current itemset choices; false otherwise
+     */
+    public boolean shouldLimitValueToSelectChoices() {
+        return controlType == Constants.CONTROL_SELECT_ONE
+            || controlType == Constants.CONTROL_SELECT_MULTI;
     }
 
     //Deprecated

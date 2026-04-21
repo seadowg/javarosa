@@ -69,6 +69,8 @@ public class ItemsetBinding implements Externalizable, Localizable {
     private TreeReference destRef; //ref that identifies the repeated nodes resulting from this itemset
     //not serialized -- set by QuestionDef.setDynamicChoices()
 
+    private boolean limitValueToSelectChoices = true; // if true, values without a corresponding choice should be cleared
+
     public boolean randomize = false;
     public XPathExpression randomSeedExpr = null;
 
@@ -254,16 +256,16 @@ public class ItemsetBinding implements Externalizable, Localizable {
      * SIDE EFFECTS: mutates the instance node's value (TreeElement.value, type {@link SelectOneData} or {@link MultipleItemsData})
      */
     private void updateQuestionAnswerInModel(FormDef formDef, TreeReference curQRef, Map<String, SelectChoice> selectChoicesForAnswer) {
-        IAnswerData originalValue = formDef.getMainInstance().resolveReference(curQRef).getValue();
+        IAnswerData rawValue = formDef.getMainInstance().resolveReference(curQRef).getValue();
 
-        if (originalValue instanceof MultipleItemsData || originalValue instanceof SelectOneData) {
+        if (rawValue != null && limitValueToSelectChoices) {
             IAnswerData boundAndFilteredValue;
-            if (originalValue instanceof MultipleItemsData) {
-                boundAndFilteredValue = getFilteredAndBoundSelections((MultipleItemsData) originalValue, selectChoicesForAnswer);
+            if (rawValue instanceof MultipleItemsData) {
+                boundAndFilteredValue = getFilteredAndBoundSelections((MultipleItemsData) rawValue, selectChoicesForAnswer);
             } else if (selectChoicesForAnswer.containsValue(null)) {
                 boundAndFilteredValue = null;
             } else {
-                SelectChoice selectChoice = selectChoicesForAnswer.get(originalValue.getDisplayText());
+                SelectChoice selectChoice = selectChoicesForAnswer.get(rawValue.getDisplayText());
                 boundAndFilteredValue = new SelectOneData(selectChoice.selection());
             }
 
@@ -361,6 +363,8 @@ public class ItemsetBinding implements Externalizable, Localizable {
             if (copyMode) {
                 destRef.add(copyRef.getNameLast(), TreeReference.INDEX_UNBOUND);
             }
+
+            limitValueToSelectChoices = q.shouldLimitValueToSelectChoices();
         }
     }
 
