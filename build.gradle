@@ -3,13 +3,13 @@ buildscript {
         google()
         mavenCentral()
         maven {
-            url "https://plugins.gradle.org/m2/"
+            url = uri("https://plugins.gradle.org/m2/")
         }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
-        classpath "me.champeau.jmh:jmh-gradle-plugin:0.6.7"
+        classpath("com.android.tools.build:gradle:9.1.1")
+        classpath("me.champeau.jmh:jmh-gradle-plugin:0.7.3")
     }
 }
 
@@ -27,52 +27,65 @@ if (!project.hasProperty("android")) {
     apply plugin: 'com.android.library'
 }
 
+plugins.withId('com.android.library') {
+    dependencies {
+        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    }
+}
+
 repositories {
     google()
     mavenCentral()
 }
 
-sourceSets {
-    main.java.srcDirs = ['src/main/java']
-    main.resources.srcDirs = ['src/main/resources']
-    test.java.srcDirs = ['src/test/java']
-    test.resources.srcDirs = ['src/test/resources']
-}
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
-
-compileJava {
-    options.compilerArgs << "-Xlint:deprecation"
-}
-
-compileTestJava {
-    options.compilerArgs << "-Xlint:deprecation"
-}
-
-targetCompatibility = '1.8'
-sourceCompatibility = '1.8'
-
 if (!project.hasProperty("android")) {
-    // TODO: does not build UML diagrams
-    javadoc {
-        failOnError = false
-    }
-
-    jacocoTestReport {
-        reports {
-            xml {
-                enabled false
-            }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/resources']
+        }
+        test {
+            java.srcDirs = ['src/test/java']
+            resources.srcDirs = ['src/test/resources']
         }
     }
 
-// Required to use fileExtensions property in checkstyle file
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    tasks.named('compileJava', JavaCompile) {
+        options.encoding = "UTF-8"
+        options.compilerArgs << "-Xlint:deprecation"
+    }
+
+    tasks.named('compileTestJava', JavaCompile) {
+        options.encoding = "UTF-8"
+        options.compilerArgs << "-Xlint:deprecation"
+    }
+
+    // TODO: does not build UML diagrams
+    tasks.named('javadoc', Javadoc) {
+        failOnError = false
+    }
+
+    tasks.named('jacocoTestReport', JacocoReport) {
+        reports {
+            xml.required = false
+        }
+    }
+
+    // Required to use fileExtensions property in checkstyle file
     checkstyle {
         toolVersion = '7.6.1'
     }
 
-    jmhJar.doFirst {
-        new File("build/resources/test").mkdirs()
+    tasks.named('jmhJar') {
+        doFirst {
+            new File("build/resources/test").mkdirs()
+        }
     }
 
     jmh {
@@ -90,7 +103,6 @@ if (!project.hasProperty("android")) {
         includeTests = true
         resultFormat = 'CSV'
         forceGC = true
-
         duplicateClassesStrategy = DuplicatesStrategy.WARN
     }
 
@@ -100,42 +112,40 @@ if (!project.hasProperty("android")) {
                 groupId = 'org.getodk'
                 artifactId = 'javarosa'
                 version = 'local'
-
                 from components.java
             }
         }
     }
 } else {
     android {
-        namespace 'com.example'
-
-        compileSdkVersion 34
+        namespace = 'com.example'
+        compileSdk = 36
 
         defaultConfig {
-            minSdkVersion 21
-            targetSdkVersion 33
-            versionCode 1
-            versionName "1.0"
-            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            minSdk = 21
+            targetSdk = 33
+            versionCode = 1
+            versionName = "1.0"
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
         compileOptions {
-            coreLibraryDesugaringEnabled true
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+            coreLibraryDesugaringEnabled = true // For APIs requiring > API 21
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
         }
 
         buildTypes {
             release {
-                minifyEnabled false
+                minifyEnabled = false
             }
         }
+    }
 
-        configurations.configureEach {
-            resolutionStrategy {
-                // Fix mismatch with kotlin-stdlib
-                force 'org.jetbrains:annotations:26.0.2'
-            }
+    configurations.configureEach {
+        resolutionStrategy {
+            // Fix mismatch with kotlin-stdlib
+            force('org.jetbrains:annotations:26.0.2')
         }
     }
 }
