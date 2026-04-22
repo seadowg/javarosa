@@ -11,7 +11,9 @@ references:
     android_config: &android_config
         working_directory: *workspace
         docker:
-            - image: cimg/android:2022.09.1
+            - image: cimg/android:2026.03
+        environment:
+            JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 
 jobs:
   build:
@@ -21,13 +23,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - run: ./gradlew check jacocoTestReport javadoc jar
       - save_cache:
           paths:
             - ~/.gradle
             - ~/work/.gradle
-          key: jars-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - store_artifacts:
           path: build/reports
           destination: reports

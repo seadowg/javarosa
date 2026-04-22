@@ -16,6 +16,12 @@
 
 package org.javarosa.core.model;
 
+import org.javarosa.test.Scenario;
+import org.javarosa.xform.parse.XFormParser;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
@@ -23,12 +29,6 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.javarosa.core.test.SelectChoiceMatchers.choice;
 import static org.javarosa.form.api.FormEntryController.ANSWER_REQUIRED_BUT_EMPTY;
-
-import org.javarosa.test.Scenario;
-import org.javarosa.xform.parse.XFormParser;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * When itemsets are dynamically generated, the choices available to a user in a select one question can change based on
@@ -99,8 +99,8 @@ public class SelectOneChoiceFilterTest {
         assertThat(scenario.choicesOf("/data/level2"), empty());
         assertThat(scenario.choicesOf("/data/level3"), empty());
 
-        scenario.answer("/data/level1", scenario.choicesOf("/data/level1").get(0));
-        scenario.answer("/data/level2", scenario.choicesOf("/data/level2").get(0));
+        scenario.answer("/data/level1", "a");
+        scenario.answer("/data/level2", "aa");
         assertThat(scenario.choicesOf("/data/level3"), containsInAnyOrder(
             choice("aaa"),
             choice("aab")));
@@ -119,9 +119,9 @@ public class SelectOneChoiceFilterTest {
         assertThat(scenario.answerOf("/data/level2"), nullValue());
         assertThat(scenario.answerOf("/data/level3"), nullValue());
 
-        scenario.answer("/data/level1", scenario.choicesOf("/data/level1").get(0));
-        scenario.answer("/data/level2", scenario.choicesOf("/data/level2").get(0));
-        scenario.answer("/data/level3", scenario.choicesOf("/data/level3").get(0));
+        scenario.answer("/data/level1", "a");
+        scenario.answer("/data/level2", "aa");
+        scenario.answer("/data/level3", "aab");
 
         scenario.answer("/data/level1", "");
 
@@ -144,14 +144,14 @@ public class SelectOneChoiceFilterTest {
     public void changingValueAtLevel2_ShouldClearLevel3_IfChoiceNoLongerAvailable() {
         scenario.newInstance();
 
-        scenario.answer("/data/level1_contains", scenario.choicesOf("/data/level1_contains").get(0));
-        scenario.answer("/data/level2_contains", scenario.choicesOf("/data/level2_contains").get(0));
+        scenario.answer("/data/level1_contains", "a");
+        scenario.answer("/data/level2_contains", "aa");
         assertThat(scenario.choicesOf("/data/level3_contains"), containsInAnyOrder(
             choice("aaa"),
             choice("aab"),
             choice("baa")));
-        scenario.answer("/data/level3_contains", scenario.choicesOf("/data/level3_contains").get(0));
-        scenario.answer("/data/level2_contains", scenario.choicesOf("/data/level2_contains").get(1));
+        scenario.answer("/data/level3_contains", "aaa");
+        scenario.answer("/data/level2_contains", "ab");
         assertThat(scenario.choicesOf("/data/level3_contains"), containsInAnyOrder(
             choice("aab"),
             choice("bab")));
