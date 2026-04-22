@@ -1,6 +1,7 @@
 package org.javarosa.core.model;
 
 import org.javarosa.core.model.data.SelectOneData;
+import org.javarosa.core.util.externalizable.DeserializationException;
 import org.javarosa.test.Scenario;
 import org.javarosa.xform.parse.XFormParser;
 import org.junit.Test;
@@ -72,6 +73,32 @@ public class SelectOneQuestionTest {
                 select1Dynamic("/data/select", "instance('yes_no')/root/item")
             )
         ));
+
+        scenario.choicesOf("/data/select"); // Populate choices
+        assertThat(scenario.answerOf("/data/select").getValue(), equalTo(scenario.choicesOf("/data/select").get(0).selection()));
+        assertThat(scenario.answerOf("/data/select"), is(instanceOf(SelectOneData.class)));
+    }
+
+    @Test
+    public void choiceIsSelectedWhenLiteralIntegerValueMatchesChoiceValue_afterDeserialization() throws IOException, XFormParser.ParseException, DeserializationException {
+        Scenario scenario = Scenario.init("Integer calculate", html(
+            head(
+                title("Integer calculate"),
+                model(
+                    mainInstance(t("data id=\"integer-calculate\"",
+                        t("select")
+                    )),
+
+                    instance("yes_no",
+                        item(0, "No"),
+                        item(1, "Yes")
+                    ),
+                    bind("/data/select").type("string").calculate("if(1=2, 1, 0)")
+                )),
+            body(
+                select1Dynamic("/data/select", "instance('yes_no')/root/item")
+            )
+        )).serializeAndDeserializeForm();
 
         scenario.choicesOf("/data/select"); // Populate choices
         assertThat(scenario.answerOf("/data/select").getValue(), equalTo(scenario.choicesOf("/data/select").get(0).selection()));
