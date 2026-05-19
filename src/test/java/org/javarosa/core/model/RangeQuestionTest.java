@@ -19,7 +19,7 @@ import static org.javarosa.test.XFormsElement.title;
 
 public class RangeQuestionTest {
     @Test
-    public void answerIsPreservedWhenRangeQuestionHasIncompleteChoices() throws Exception {
+    public void answerIsPreservedWhenRangeQuestionHasIncompleteItemsetChoices() throws Exception {
         Scenario scenario = Scenario.init("range question with incomplete choices", html(
             head(
                 title("Range question with incomplete choices"),
@@ -41,6 +41,31 @@ public class RangeQuestionTest {
                         t("label ref=\"label\""),
                         t("value ref=\"value\"")
                     )
+                )
+            )
+        ));
+
+        scenario.answer("/data/range", 1);
+        scenario.choicesOf("/data/range");
+        assertThat(scenario.answerOf("/data/range"), is(intAnswer(1)));
+    }
+
+    @Test
+    public void answerIsPreservedWhenRangeQuestionHasIncompleteItemChoices() throws Exception {
+        Scenario scenario = Scenario.init("range question with incomplete choices", html(
+            head(
+                title("Range question with incomplete choices"),
+                model(
+                    mainInstance(t("data id=\"range-question-with-incomplete-choices\"",
+                        t("range")
+                    )),
+                    bind("/data/range").type("int")
+                )),
+            body(
+                t("range ref=\"/data/range\" start=\"-2\" end=\"2\" step=\"1\"",
+                    item(-2, "A"),
+                    item(0, "B"),
+                    item(2, "C")
                 )
             )
         ));
