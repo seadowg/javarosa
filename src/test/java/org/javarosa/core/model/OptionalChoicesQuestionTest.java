@@ -17,9 +17,9 @@ import static org.javarosa.test.XFormsElement.model;
 import static org.javarosa.test.XFormsElement.t;
 import static org.javarosa.test.XFormsElement.title;
 
-public class RangeQuestionTest {
+public class OptionalChoicesQuestionTest {
     @Test
-    public void answerIsPreservedWhenRangeQuestionHasIncompleteItemsetChoices() throws Exception {
+    public void answerIsPreservedWhenQuestionHasIncompleteItemsetChoices() throws Exception {
         Scenario scenario = Scenario.init("range question with incomplete choices", html(
             head(
                 title("Range question with incomplete choices"),
@@ -51,7 +51,7 @@ public class RangeQuestionTest {
     }
 
     @Test
-    public void answerIsPreservedWhenRangeQuestionHasIncompleteItemChoices() throws Exception {
+    public void answerIsPreservedWhenQuestionHasIncompleteItemChoices() throws Exception {
         Scenario scenario = Scenario.init("range question with incomplete choices", html(
             head(
                 title("Range question with incomplete choices"),
