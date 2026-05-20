@@ -39,7 +39,7 @@ import org.junit.Test;
 public class RecordAudioActionTest {
     @Test
     public void recordAudioAction_isProcessedOnFormParse() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Record audio form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Record audio form"),
                 model(
@@ -62,7 +62,7 @@ public class RecordAudioActionTest {
         CapturingRecordAudioActionListener listener = new CapturingRecordAudioActionListener();
         RecordAudioActions.setRecordAudioListener(listener);
 
-        Scenario.init("Record audio form", html(
+        Scenario.init(html(
             head(
                 title("Record audio form"),
                 model(
@@ -86,7 +86,7 @@ public class RecordAudioActionTest {
         CapturingRecordAudioActionListener listener = new CapturingRecordAudioActionListener();
         RecordAudioActions.setRecordAudioListener(listener);
 
-        Scenario.init("Record audio form", html(
+        Scenario.init(html(
             head(
                 title("Record audio form"),
                 model(
@@ -108,7 +108,7 @@ public class RecordAudioActionTest {
 
     @Test
     public void serializationAndDeserialization_maintainsFields() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Record audio form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Record audio form"),
                 model(

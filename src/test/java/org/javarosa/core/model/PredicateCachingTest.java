@@ -28,7 +28,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedEqPredicatesAreOnlyEvaluatedOnceWhileAnswering() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -63,7 +63,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedCompPredicatesAreOnlyEvaluatedOnceWhileAnswering() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -98,7 +98,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedIdempotentFuncPredicatesAreOnlyEvaluatedOnceWhileAnswering() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -133,7 +133,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedEqPredicatesAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -169,7 +169,7 @@ public class PredicateCachingTest {
 
     @Test
     public void firstPredicateInMultipleEqPredicatesAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -221,7 +221,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedCompPredicatesWithSameAbsoluteValueAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -257,7 +257,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatedIdempotentFuncPredicatesWithSameAbsoluteValueAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -323,7 +323,7 @@ public class PredicateCachingTest {
 
     @Test
     public void predicatesOnDifferentChildNamesDoNotGetConfused() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -360,7 +360,7 @@ public class PredicateCachingTest {
 
     @Test
     public void eqExpressionsWorkIfEitherSideIsRelative() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -398,7 +398,7 @@ public class PredicateCachingTest {
 
     @Test
     public void eqExpressionsWorkIfBothSidesAreRelative() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -424,7 +424,7 @@ public class PredicateCachingTest {
 
     @Test
     public void nestedPredicatesDoNotGetConfused() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -474,7 +474,7 @@ public class PredicateCachingTest {
 
     @Test
     public void similarCmpAndEqExpressionsDoNotGetConfused() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -506,7 +506,7 @@ public class PredicateCachingTest {
 
     @Test
     public void differentEqExpressionsAreNotConfused() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -542,7 +542,7 @@ public class PredicateCachingTest {
 
     @Test
     public void differentKindsOfEqExpressionsAreNotConfused() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -573,7 +573,7 @@ public class PredicateCachingTest {
 
     @Test
     public void repeatsUsedInCalculatesStayUpToDate() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -611,7 +611,7 @@ public class PredicateCachingTest {
     public void eqPredicatesDoNotIncreaseLoadTime() {
         int evaluations = Measure.withMeasure(asList("PredicateEvaluation", "IndexEvaluation"), () -> {
                 try {
-                    Scenario.init("Some form", html(
+                    Scenario.init(html(
                         head(
                             title("Some form"),
                             model(

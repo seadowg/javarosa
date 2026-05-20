@@ -25,7 +25,7 @@ import static org.javarosa.test.XFormsElement.title;
 public class TriggersForRelativeRefsTest {
     @Test
     public void indefiniteRepeatJrCountExpression_inSingleRepeat_addsRepeatsUntilConditionMet() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("indefinite repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Indefinite repeat"),
                 model(
@@ -62,7 +62,7 @@ public class TriggersForRelativeRefsTest {
 
     @Test
     public void indefiniteRepeatJrCountExpression_inNestedRepeat_addsRepeatsUntilConditionMet() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("nested indefinite repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Indefinite repeat in nested repeat"),
                 model(
@@ -113,7 +113,7 @@ public class TriggersForRelativeRefsTest {
 
     @Test
     public void indefiniteRepeatJrCountExpression_inNestedRepeat_withRelativePaths_addsRepeatsUntilConditionMet() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("nested indefinite repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Indefinite repeat in nested repeat"),
                 model(
@@ -164,7 +164,7 @@ public class TriggersForRelativeRefsTest {
 
     @Test
     public void predicateWithRelativePathExpression_reevaluated_whenTriggerChanges() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Predicate trigger", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Predicate trigger"),
                 model(
@@ -217,7 +217,7 @@ public class TriggersForRelativeRefsTest {
 
     @Test
     public void predicateWithCurrentPathExpression_reevaluated_whenTriggerChanges() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Predicate trigger", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Predicate trigger"),
                 model(

@@ -21,7 +21,7 @@ public class MultiplePredicateTest {
 
     @Test
     public void calculatesSupportMultiplePredicatesInOnePartOfPath() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -66,7 +66,7 @@ public class MultiplePredicateTest {
 
     @Test
     public void calculatesSupportMultiplePredicatesInMultiplePartsOfPath() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

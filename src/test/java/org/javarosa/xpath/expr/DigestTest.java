@@ -87,7 +87,7 @@ public class DigestTest {
 
     @Test
     public void digestFunction_acceptsDynamicParameters() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Digest form"),
                 model(

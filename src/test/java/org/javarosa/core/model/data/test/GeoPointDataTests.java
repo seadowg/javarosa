@@ -45,7 +45,7 @@ public class GeoPointDataTests {
 
     @Test
     public void missingAccuracy_isNotTreatedAs0() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Missing accuracy", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Missing accuracy"),
                 model(

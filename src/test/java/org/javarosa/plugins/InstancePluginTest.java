@@ -56,10 +56,10 @@ public class InstancePluginTest {
             new Pair<>("1", "Item 1")
         ), true));
 
-        File tempFile = TempFileUtils.createTempFile("fake-instance", "fake");
+        File tempFile = TempFileUtils.createTempFile("fake");
         setUpSimpleReferenceManager(tempFile, "file-csv", "file");
 
-        Scenario scenario = Scenario.init("Fake instance form", html(
+        Scenario scenario = Scenario.init(html(
                 head(
                     title("Fake instance form"),
                     model(
@@ -125,10 +125,10 @@ public class InstancePluginTest {
             new Pair<>("1", "Item 1")
         ), true));
 
-        File tempFile = TempFileUtils.createTempFile("fake-instance", "fake");
+        File tempFile = TempFileUtils.createTempFile("fake");
         setUpSimpleReferenceManager(tempFile, "file-csv", "file");
 
-        Scenario scenario = Scenario.init("Fake instance form", html(
+        Scenario scenario = Scenario.init(html(
                 head(
                     title("Fake instance form"),
                     model(
@@ -194,10 +194,10 @@ public class InstancePluginTest {
             new Pair<>("1", "Item 1")
         ), true));
 
-        File tempFile = TempFileUtils.createTempFile("fake-instance", "fake");
+        File tempFile = TempFileUtils.createTempFile("fake");
         setUpSimpleReferenceManager(tempFile, "file-csv", "file");
 
-        Scenario scenario = Scenario.init("Fake instance form", html(
+        Scenario scenario = Scenario.init(html(
                 head(
                     title("Fake instance form"),
                     model(
@@ -247,10 +247,10 @@ public class InstancePluginTest {
             new Pair<>("0", "Item 0")
         ), false));
 
-        File tempFile = TempFileUtils.createTempFile("fake-instance", "fake");
+        File tempFile = TempFileUtils.createTempFile("fake");
         setUpSimpleReferenceManager(tempFile, "file-csv", "file");
 
-        Scenario scenario = Scenario.init("Fake instance form", html(
+        Scenario scenario = Scenario.init(html(
                 head(
                     title("Fake instance form"),
                     model(

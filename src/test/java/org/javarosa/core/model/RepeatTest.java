@@ -26,7 +26,7 @@ public class RepeatTest {
 
     @Test
     public void whenRepeatIsNotRelevant_repeatPromptIsSkipped() throws Exception {
-        Scenario scenario = Scenario.init("Non relevant repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Non relevant repeat"),
                 model(
@@ -50,7 +50,7 @@ public class RepeatTest {
 
     @Test
     public void whenRepeatRelevanceIsDynamic_andNotRelevant_repeatPromptIsSkipped() throws Exception {
-        Scenario scenario = Scenario.init("Repeat relevance - dynamic expression", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance - dynamic expression"),
                 model(
@@ -79,7 +79,7 @@ public class RepeatTest {
 
     @Test
     public void whenRepeatAndTopLevelNodeHaveSameRelevanceExpression_andExpressionEvaluatesToFalse_repeatPromptIsSkipped() throws Exception {
-        Scenario scenario = Scenario.init("Repeat relevance same as other", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance same as other"),
                 model(
@@ -115,7 +115,7 @@ public class RepeatTest {
      */
     @Test
     public void absoluteSingleNodePaths_areQualified_forLegacyPurposes() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Absolute relative ref", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Absolute relative ref"),
                 model(

@@ -21,7 +21,7 @@ import org.junit.Test;
 public class QuestionPreloaderTest {
     @Test
     public void preloader_preloadsElements() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Preload attribute", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Preload element"),
                 model(
@@ -41,7 +41,7 @@ public class QuestionPreloaderTest {
     @Test
     // Unintentional limitation
     public void preloader_doesNotpreloadAttributes() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Preload attribute", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Preload attribute"),
                 model(

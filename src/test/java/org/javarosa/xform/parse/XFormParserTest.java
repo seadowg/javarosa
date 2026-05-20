@@ -120,7 +120,7 @@ public class XFormParserTest {
     
     @Test
     public void spacesBetweenOutputs_areRespected() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("spaces-outputs", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 model(
                     mainInstance(t("data id=\"spaces-outputs\"",

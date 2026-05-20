@@ -73,7 +73,7 @@ public class TriggerableDagTest {
 
     @Test
     public void order_of_the_DAG_is_ensured() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -108,7 +108,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/count").type("int").calculate(". + 1")
         ));
     }
@@ -118,7 +118,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/a").type("int").calculate("/data/b + 1"),
             bind("/data/b").type("int").calculate("/data/c + 1"),
             bind("/data/c").type("int").calculate("/data/a + 1")
@@ -130,7 +130,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/count").type("int").relevant(". > 0")
         ));
     }
@@ -140,7 +140,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/count").type("int").readonly(". > 10")
         ));
     }
@@ -150,14 +150,14 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/count").type("int").required(". > 10")
         ));
     }
 
     @Test
     public void supports_self_references_in_constraints() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario scenario = Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/count").type("int").constraint(". > 10")
         ));
         scenario.next();
@@ -194,7 +194,7 @@ public class TriggerableDagTest {
     @Test
     @Ignore
     public void supports_codependant_relevant_expressions() throws IOException, XFormParser.ParseException {
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/a").type("int").relevant("/data/b > 0"),
             bind("/data/b").type("int").relevant("/data/a > 0")));
         // TODO Complete the test adding some assertions that verify that the form works as we would expect
@@ -225,7 +225,7 @@ public class TriggerableDagTest {
     @Test
     @Ignore
     public void supports_codependant_required_conditions() throws IOException, XFormParser.ParseException {
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/a").type("int").required("/data/b > 0"),
             bind("/data/b").type("int").required("/data/a > 0")));
         // TODO Complete the test adding some assertions that verify that the form works as we would expect
@@ -256,7 +256,7 @@ public class TriggerableDagTest {
     @Test
     @Ignore
     public void supports_codependant_readonly_conditions() throws IOException, XFormParser.ParseException {
-        Scenario.init("Some form", buildFormForDagCyclesCheck(
+        Scenario.init(buildFormForDagCyclesCheck(
             bind("/data/a").type("int").readonly("/data/b > 0"),
             bind("/data/b").type("int").readonly("/data/a > 0")));
         // TODO Complete the test adding some assertions that verify that the form works as we would expect
@@ -267,7 +267,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", html(
+        Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -295,7 +295,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", html(
+        Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -324,7 +324,7 @@ public class TriggerableDagTest {
     @Test
     @Ignore
     public void supports_self_reference_dependency_when_targeting_different_repeat_instance_siblings() throws IOException, XFormParser.ParseException {
-        Scenario.init("Some form", html(
+        Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -348,7 +348,7 @@ public class TriggerableDagTest {
         exceptionRule.expect(XFormParseException.class);
         exceptionRule.expectMessage("Cycle detected in form's relevant and calculation logic!");
 
-        Scenario.init("Some form", html(
+        Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -378,7 +378,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void non_relevance_is_inherited_from_ancestors() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -424,7 +424,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void relevanceIsDeterminedByModelNesting() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -449,7 +449,7 @@ public class TriggerableDagTest {
 
     @Test
     public void non_relevant_nodes_are_excluded_from_nodeset_evaluation() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -498,7 +498,7 @@ public class TriggerableDagTest {
 
     @Test
     public void non_relevant_node_values_are_always_null_regardless_of_their_actual_value() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -539,7 +539,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void verify_relation_between_calculate_expressions_and_relevancy_conditions() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -589,7 +589,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void whenRepeatAndTopLevelNodeHaveSameRelevanceExpression_andExpressionEvaluatesToFalse_repeatPromptIsSkipped() throws Exception {
-        Scenario scenario = Scenario.init("Repeat relevance same as other", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance same as other"),
                 model(
@@ -626,7 +626,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void readonly_is_inherited_from_ancestors() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -683,7 +683,7 @@ public class TriggerableDagTest {
     //region Required and constraint
     @Test
     public void constraints_of_fields_that_are_empty_are_always_satisfied() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -710,7 +710,7 @@ public class TriggerableDagTest {
 
     @Test
     public void empty_required_fields_make_form_validation_fail() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -735,7 +735,7 @@ public class TriggerableDagTest {
 
     @Test
     public void constraint_violations_and_form_finalization() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -784,7 +784,7 @@ public class TriggerableDagTest {
     //region Adding or deleting repeats
     @Test
     public void addingRepeatInstance_updatesCalculationCascade() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Add repeat instance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Add repeat instance"),
                 model(
@@ -821,7 +821,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingRepeat_updatesInnerCalculations_withMultipleDependencies() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Repeat cascading calc", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat cascading calc"),
                 model(
@@ -857,7 +857,7 @@ public class TriggerableDagTest {
     // Illustrates the second case in TriggerableDAG.getTriggerablesAffectingAllInstances
     @Test
     public void addingOrRemovingRepeatInstance_withCalculatedCountOutsideRepeat_updatesReferenceToCountInside() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -898,7 +898,7 @@ public class TriggerableDagTest {
     // every repeat instance.
     @Test
     public void addingOrRemovingRepeatInstance_updatesRepeatCount_insideAndOutsideRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -937,7 +937,7 @@ public class TriggerableDagTest {
     @Ignore("Highlights issue with de-duplicating refs and different contexts")
     @Test
     public void addingOrRemovingRepeatInstance_updatesRepeatCount_insideRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -970,7 +970,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingOrRemovingRepeatInstance_updatesRelativeRepeatCount_insideRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -1003,7 +1003,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingOrRemovingRepeatInstance_withReferenceToRepeatInRepeat_andOuterSum_updates() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -1042,7 +1042,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingOrRemovingRepeatInstance_withReferenceToPreviousInstance_updatesThatReference() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1096,7 +1096,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingOrDeletingRepeatInstance_withRelevanceInsideRepeatDependingOnCount_updatesRelevanceForAllInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1140,7 +1140,7 @@ public class TriggerableDagTest {
     //region Deleting repeats
     @Test
     public void deleteSecondRepeatGroup_evaluatesTriggerables_dependentOnPrecedingRepeatGroupSiblings() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1181,7 +1181,7 @@ public class TriggerableDagTest {
 
     @Test
     public void deleteSecondRepeatGroup_evaluatesTriggerables_dependentOnTheParentPosition() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1232,7 +1232,7 @@ public class TriggerableDagTest {
 
     @Test
     public void deleteSecondRepeatGroup_doesNotEvaluateTriggerables_notDependentOnTheParentPosition() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1283,7 +1283,7 @@ public class TriggerableDagTest {
 
     @Test
     public void deleteThirdRepeatGroup_evaluatesTriggerables_dependentOnTheRepeatGroupsNumber() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1313,7 +1313,7 @@ public class TriggerableDagTest {
     // calculations outside the repeat should only be re-computed once.
     @Test
     public void repeatInstanceDeletion_triggersCalculationsOutsideTheRepeat_exactlyOnce() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1348,7 +1348,7 @@ public class TriggerableDagTest {
 
     @Test
     public void repeatInstanceDeletion_withoutReferencesToRepeat_evaluatesNoTriggersInInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1396,7 +1396,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void deleteThirdRepeatGroup_evaluatesTriggerables_indirectlyDependentOnTheRepeatGroupsNumber() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1432,7 +1432,7 @@ public class TriggerableDagTest {
 
     @Test
     public void deleteLastRepeat_evaluatesTriggerables() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Delete last repeat instance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Delete last repeat instance"),
                 model(
@@ -1461,7 +1461,7 @@ public class TriggerableDagTest {
 
     @Test
     public void deleteLastRepeat_evaluatesTriggerables_indirectlyDependentOnTheDeletedRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Delete last repeat instance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Delete last repeat instance"),
                 model(
@@ -1495,7 +1495,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void adding_repeat_instance_triggers_triggerables_outside_repeat_that_reference_repeat_nodeset() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Form"),
                 model(
@@ -1527,7 +1527,7 @@ public class TriggerableDagTest {
      */
     @Test
     public void adding_repeat_instance_triggers_descendant_node_triggerables() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Form"),
                 model(
@@ -1576,7 +1576,7 @@ public class TriggerableDagTest {
     // getTriggerablesAffectingAllInstances but for initializeTriggerables.
     @Test
     public void addingRepeatInstance_withInnerSumOfQuestionInRepeat_updatesInnerSumForAllInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -1615,7 +1615,7 @@ public class TriggerableDagTest {
     // getTriggerablesAffectingAllInstances but for initializeTriggerables.
     @Test
     public void addingRepeatInstance_withInnerCalculateDependentOnOuterSum_updatesInnerSumForAllInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Count outside repeat used inside", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Count outside repeat used inside"),
                 model(
@@ -1655,7 +1655,7 @@ public class TriggerableDagTest {
     // is added, it will trigger recomputation for previous instances.
     @Test
     public void changingValueInRepeat_withReferenceToNextInstance_updatesPreviousInstance() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1710,7 +1710,7 @@ public class TriggerableDagTest {
         // This is a translation of the XML form in the issue to our DSL with some adaptations:
         // - Explicit binds for all fields
         // - Migrated the condition field to boolean, which should be easier to understand
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1768,7 +1768,7 @@ public class TriggerableDagTest {
     //region Repeat misc
     @Test
     public void issue_135_verify_that_counts_in_inner_repeats_work_as_expected() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1829,7 +1829,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingNestedRepeatInstance_updatesExpressionTriggeredByGenericRef_forAllRepeatInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -1870,7 +1870,7 @@ public class TriggerableDagTest {
 
     @Test
     public void addingRepeatInstance_updatesReferenceToLastInstance_usingPositionPredicate() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

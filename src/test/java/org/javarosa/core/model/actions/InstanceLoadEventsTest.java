@@ -26,7 +26,7 @@ import org.junit.Test;
 public class InstanceLoadEventsTest {
     @Test
     public void instanceLoadEvent_firesOnFirstLoad() throws Exception {
-        Scenario scenario = Scenario.init("Instance load form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Instance load form"),
                 model(
@@ -46,7 +46,7 @@ public class InstanceLoadEventsTest {
 
     @Test
     public void instanceLoadEvent_firesOnSecondLoad() throws Exception {
-        Scenario scenario = Scenario.init("Instance load form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Instance load form"),
                 model(
@@ -70,7 +70,7 @@ public class InstanceLoadEventsTest {
 
     @Test
     public void instanceFirstLoadEvent_doesNotfireOnSecondLoad() throws Exception {
-        Scenario scenario = Scenario.init("Instance load form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Instance load form"),
                 model(
@@ -94,7 +94,7 @@ public class InstanceLoadEventsTest {
 
     @Test
     public void instanceLoadEvent_triggersNestedActions() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested instance load", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested instance load"),
                 model(
@@ -119,7 +119,7 @@ public class InstanceLoadEventsTest {
 
     @Test
     public void instanceLoadEvent_triggeredForAllPreExistingRepeatInstances() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested instance load", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested instance load"),
                 model(

@@ -49,7 +49,7 @@ import static org.junit.Assert.fail;
 public class SetValueActionTest {
     @Test
     public void when_triggerNodeIsUpdated_targetNodeCalculation_isEvaluated() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested setvalue action", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested setvalue action"),
                 model(
@@ -76,7 +76,7 @@ public class SetValueActionTest {
 
     @Test
     public void expressionAsLiteralValue_isNotEvaluated() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Literal setvalue", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Literal setvalue"),
                 model(
@@ -103,7 +103,7 @@ public class SetValueActionTest {
 
     @Test
     public void when_triggerNodeIsUpdatedWithTheSameValue_targetNodeCalculation_isNotEvaluated() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested setvalue action", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested setvalue action"),
                 model(
@@ -139,7 +139,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_isSerializedAndDeserialized() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested setvalue action", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested setvalue action"),
                 model(
@@ -167,7 +167,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalueWithNoValue_isSerializedAndDeserialized() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue action", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue action"),
                 model(
@@ -196,7 +196,7 @@ public class SetValueActionTest {
     //region groups
     @Test
     public void setvalueInGroup_setsValueOutsideOfGroup() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue"),
                 model(
@@ -222,7 +222,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalueOutsideGroup_setsValueInGroup() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue"),
                 model(
@@ -249,7 +249,7 @@ public class SetValueActionTest {
     //region repeats
     @Test
     public void sourceInRepeat_updatesDestInSameRepeatInstance() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested setvalue action with repeats", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested setvalue action with repeats"),
                 model(
@@ -287,7 +287,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalueAtRoot_setsValueOfNodeInFirstRepeatInstance() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue into repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue into repeat"),
                 model(
@@ -317,7 +317,7 @@ public class SetValueActionTest {
     @Ignore("TODO: verifyActions seems like it may be overzealous")
     @Test
     public void setvalueAtRoot_setsValueOfNodeInRepeatInstanceAddedAfterFormLoad() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue into repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue into repeat"),
                 model(
@@ -346,7 +346,7 @@ public class SetValueActionTest {
 
     @Test
     public void setValueAtRoot_throwsExpression_whenTargetIsUnboundReference() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue into repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue into repeat"),
                 model(
@@ -379,7 +379,7 @@ public class SetValueActionTest {
 
     @Test
     public void setValueInRepeat_setsValueOutsideOfRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested setvalue action with repeats", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested setvalue action with repeats"),
                 model(
@@ -414,7 +414,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalueInOuterRepeat_setsInnerRepeatValue() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested repeats", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested repeats"),
                 model(
@@ -446,7 +446,7 @@ public class SetValueActionTest {
      */
     @Test
     public void setvalue_setsValueOfReadOnlyField() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue readonly", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue readonly"),
                 model(
@@ -466,7 +466,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_withInnerEmptyString_clearsTarget() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue empty string", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue empty string"),
                 model(
@@ -486,7 +486,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_withEmptyStringValue_clearsTarget() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue empty string", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue empty string"),
                 model(
@@ -506,7 +506,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_setsValueOfMultipleFields() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue multiple destinations", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue multiple destinations"),
                 model(
@@ -532,7 +532,7 @@ public class SetValueActionTest {
 
     @Test
     public void xformsValueChanged_triggeredAfterRecomputation() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("xforms-value-changed-event", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Value changed event"),
                 model(
@@ -556,7 +556,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_setsValueOfAttribute() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Setvalue attribute", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue attribute"),
                 model(
@@ -575,7 +575,7 @@ public class SetValueActionTest {
 
     @Test
     public void setvalue_setsValueOfAttribute_afterDeserialization() throws IOException, XFormParser.ParseException, DeserializationException {
-        Scenario scenario = Scenario.init("Setvalue attribute", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Setvalue attribute"),
                 model(

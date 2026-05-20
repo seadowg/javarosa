@@ -40,7 +40,7 @@ public class ReadOnlyCalculateTest {
      */
     @Test
     public void calculate_evaluatedOnReadonlyFieldWithUi() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Calculate readonly", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Calculate readonly"),
                 model(

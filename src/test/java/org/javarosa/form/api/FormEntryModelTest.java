@@ -39,7 +39,7 @@ import org.junit.Test;
 public class FormEntryModelTest {
     @Test
     public void isIndexRelevant_respectsRelevanceOfOutermostGroup() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested relevance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested relevance"),
                 model(

@@ -28,7 +28,7 @@ public class IndexedRepeatTest {
     @Test
     public void firstArgNotChildOfRepeat_throwsException() throws Exception {
         try {
-            Scenario.init("indexed-repeat", html(
+            Scenario.init(html(
                 head(
                     title("indexed-repeat"),
                     model(
@@ -56,7 +56,7 @@ public class IndexedRepeatTest {
 
     @Test
     public void getsIndexedValueInSingleRepeat() throws Exception {
-        Scenario scenario = Scenario.init("indexed-repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("indexed-repeat"),
                 model(
@@ -96,7 +96,7 @@ public class IndexedRepeatTest {
 
     @Test
     public void getsIndexedValueUsingParallelRepeatPosition() throws Exception {
-        Scenario scenario = Scenario.init("indexed-repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("indexed-repeat"),
                 model(
@@ -182,7 +182,7 @@ public class IndexedRepeatTest {
     }
 
     public static Scenario buildNestedRepeatForm() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("indexed-repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("indexed-repeat"),
                 model(

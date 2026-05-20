@@ -46,7 +46,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForGeopointNodeset() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geopoint nodeset distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geopoint nodeset distance"),
                 model(
@@ -76,7 +76,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForGeotrace() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geotrace distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geotrace distance"),
                 model(
@@ -99,7 +99,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForGeoshape() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geoshape distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geoshape distance"),
                 model(
@@ -122,7 +122,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForString() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("string distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("String distance"),
                 model(
@@ -155,7 +155,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForInlineString() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("string distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("String distance"),
                 model(
@@ -187,7 +187,7 @@ public class GeoDistanceTest {
     @Test
     public void distance_throwsForNonPoint() throws IOException, XFormParser.ParseException {
         try {
-            Scenario.init("string distance", html(
+            Scenario.init(html(
                 head(
                     title("String distance"),
                     model(
@@ -210,7 +210,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForMultiplePathArguments() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("string distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Multi parameter distance"),
                 model(
@@ -241,7 +241,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_isComputedForMixedPathAndStringArguments() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("string distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Multi parameter distance"),
                 model(
@@ -268,7 +268,7 @@ public class GeoDistanceTest {
 
     @Test
     public void distance_whenTraceHasFewerThanTwoPoints_isZero() throws Exception {
-        Scenario scenario = Scenario.init("geotrace distance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geotrace distance"),
                 model(

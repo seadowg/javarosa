@@ -21,6 +21,7 @@ import kotlin.Pair;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.regex.Pattern;
 
@@ -111,6 +112,10 @@ public interface XFormsElement {
         return t("h:title", innerHTML);
     }
 
+    static XFormsElement title() {
+        return t("h:title", UUID.randomUUID().toString());
+    }
+
     static XFormsElement model(XFormsElement... children) {
         return t("model", children);
     }
@@ -126,6 +131,10 @@ public interface XFormsElement {
 
     static XFormsElement mainInstance(XFormsElement... children) {
         return t("instance", children);
+    }
+
+    static XFormsElement data(XFormsElement... children) {
+        return t("data id=\"" + UUID.randomUUID() + "\"", children);
     }
 
     static XFormsElement instance(String name, XFormsElement... children) {

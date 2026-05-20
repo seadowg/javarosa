@@ -28,7 +28,7 @@ Snapshots are published for each commit to `master` and are available [here](htt
 
 ## Requirements
 
-JavaRosa works on Android API level 21+ (with desugaring enabled) and Java 8+.
+JavaRosa works on Android API level 26+ (with desugaring enabled) and Java 8+.
 
 ## Extending
 

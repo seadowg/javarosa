@@ -97,7 +97,7 @@ public class CreateRepeatDagBenchmark {
     }
 
     static Scenario getExpressionInsideScenario() throws IOException, XFormParser.ParseException {
-        return Scenario.init("Repeat with expression inside", html(
+        return Scenario.init(html(
             head(
                 title("Repeat with expression inside"),
                 model(
@@ -119,7 +119,7 @@ public class CreateRepeatDagBenchmark {
     }
 
     static Scenario getExpressionInsideWithRefOutsideScenario() throws IOException, XFormParser.ParseException {
-        return Scenario.init("Repeat with expression inside referencing outside", html(
+        return Scenario.init(html(
             head(
                 title("Repeat with expression inside referencing outside"),
                 model(
@@ -141,7 +141,7 @@ public class CreateRepeatDagBenchmark {
     }
 
     static Scenario getSumExpressionOutsideScenario() throws IOException, XFormParser.ParseException {
-        return Scenario.init("Repeat with sum expression outside", html(
+        return Scenario.init(html(
             head(
                 title("Repeat with sum expression outside"),
                 model(
@@ -163,7 +163,7 @@ public class CreateRepeatDagBenchmark {
     }
 
     static Scenario getExpressionInsideWithPositionCallScenario() throws IOException, XFormParser.ParseException {
-        return Scenario.init("Repeat with expression inside referencing outside", html(
+        return Scenario.init(html(
             head(
                 title("Repeat with expression inside referencing outside"),
                 model(

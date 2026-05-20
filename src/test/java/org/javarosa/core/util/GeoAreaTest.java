@@ -38,7 +38,7 @@ import org.junit.Test;
 public class GeoAreaTest {
     @Test
     public void area_isComputedForGeoshape() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geoshape area", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geoshape area"),
                 model(
@@ -62,7 +62,7 @@ public class GeoAreaTest {
 
     @Test
     public void area_isComputedForGeopointNodeset() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geopoint nodeset area", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geopoint nodeset area"),
                 model(
@@ -102,7 +102,7 @@ public class GeoAreaTest {
 
     @Test
     public void area_isComputedForString() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("string area", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("String area"),
                 model(
@@ -136,7 +136,7 @@ public class GeoAreaTest {
 
     @Test
     public void area_whenShapeHasFewerThanThreePoints_isZero() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("geoshape area", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Geoshape area"),
                 model(

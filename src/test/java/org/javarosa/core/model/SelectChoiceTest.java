@@ -56,7 +56,7 @@ import static org.junit.Assert.fail;
 public class SelectChoiceTest {
     @Test
     public void value_should_continue_being_an_empty_string_after_deserialization() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("SelectChoice.getValue() regression test form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("SelectChoice.getValue() regression test form"),
                 model(
@@ -107,7 +107,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getChild_returnsEmptyString_whenChoicesAreFromSecondaryInstance_andRequestedChildHasNoValue() throws XFormParser.ParseException, IOException {
-        Scenario scenario = Scenario.init("Select with empty value", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select with empty value"),
                 model(
@@ -126,7 +126,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getChild_updates_whenChoicesAreFromRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Select from repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select from repeat"),
                 model(
@@ -159,7 +159,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getChild_returnsNull_whenCalledOnAChoiceFromInlineSelect() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Static select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Static select"),
                 model(
@@ -195,7 +195,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getChildren_updates_whenChoicesAreFromRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Select from repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select from repeat"),
                 model(
@@ -232,7 +232,7 @@ public class SelectChoiceTest {
 
     @Test
     public void selectFromRepeat_usesSpecifiedValueAndLabelRefs() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Select from repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select from repeat"),
                 model(
@@ -254,7 +254,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getAdditionalChildren_returnsEmpty_whenCalledOnAChoiceFromInlineSelect() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Static select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Static select"),
                 model(
@@ -270,7 +270,7 @@ public class SelectChoiceTest {
 
     @Test
     public void getAdditionalChildren_returnsEmptyStringValue_forEmptyChildren() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Internal instance select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Internal instance select"),
                 model(
@@ -301,7 +301,7 @@ public class SelectChoiceTest {
 
     @Test
     public void itemsetBindingVerification_doesNotVerifySecondItem() throws IOException, XFormParser.ParseException {
-        Scenario.init("Some form", html(
+        Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -331,7 +331,7 @@ public class SelectChoiceTest {
     @Test
     public void itemsetBindingVerification_verifiesFirstItem() throws IOException {
         try {
-            Scenario.init("Some form", html(
+            Scenario.init(html(
                 head(
                     title("Some form"),
                     model(

@@ -55,7 +55,7 @@ public class Base64DecodeTest {
     }
 
     private static Scenario getBase64DecodeScenario(String testName, String source) throws IOException, XFormParser.ParseException {
-        return Scenario.init(testName, html(
+        return Scenario.init(html(
             head(
                 title(testName),
                 model(
@@ -76,7 +76,7 @@ public class Base64DecodeTest {
     @Test
     public void base64DecodeFunction_throwsWhenNotExactlyOneArg() throws IOException, XFormParser.ParseException {
         try {
-            Scenario scenario = Scenario.init("Invalid base64 string", html(
+            Scenario scenario = Scenario.init(html(
                 head(
                     title("Invalid base64 string"),
                     model(
@@ -101,7 +101,7 @@ public class Base64DecodeTest {
 
     @Test
     public void base64DecodeFunction_returnsEmptyStringWhenInputInvalid() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Invalid base64 string", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Invalid base64 string"),
                 model(

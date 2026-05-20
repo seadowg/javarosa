@@ -131,7 +131,7 @@ public class OdkNewRepeatEventTest {
 
     @Test
     public void newRepeatInstance_doesNotTriggerActionOnUnrelatedRepeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Parallel repeats", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Parallel repeats"),
                 model(
@@ -170,7 +170,7 @@ public class OdkNewRepeatEventTest {
 
     @Test
     public void newRepeatInstance_canUsePreviousInstanceAsDefault() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Default from prior instance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Default from prior instance"),
                 model(
