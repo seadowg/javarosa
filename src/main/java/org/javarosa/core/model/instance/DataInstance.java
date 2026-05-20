@@ -6,6 +6,7 @@ import org.javarosa.core.util.externalizable.DeserializationException;
 import org.javarosa.core.util.externalizable.ExtUtil;
 import org.javarosa.core.util.externalizable.ExtWrapNullable;
 import org.javarosa.core.util.externalizable.PrototypeFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -73,6 +74,7 @@ public abstract class DataInstance<T extends AbstractTreeElement<T>> implements 
         return false;
     }
 
+    @Nullable
     public T resolveReference(TreeReference ref) {
         if (!ref.isAbsolute()){
             return null;
