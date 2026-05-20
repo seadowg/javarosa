@@ -109,7 +109,7 @@ public class ExternalSecondaryInstanceParseTest {
         configureReferenceManagerCorrectly();
 
         try {
-            Scenario.init("Some form", html(
+            Scenario.init(html(
                 head(
                     title("Some form"),
                     model(
@@ -138,7 +138,7 @@ public class ExternalSecondaryInstanceParseTest {
     public void csvSecondaryInstanceWithHeaderOnly_parsesWithoutError() throws IOException, XFormParser.ParseException {
         configureReferenceManagerCorrectly();
 
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -265,7 +265,7 @@ public class ExternalSecondaryInstanceParseTest {
     public void exceptionFromChoiceSelection_whenFormIsDeserialized_afterPlaceholderInstanceUsed_andFileMissingColumns() throws IOException, DeserializationException, XFormParser.ParseException {
         configureReferenceManagerIncorrectly();
 
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

@@ -26,7 +26,7 @@ import static org.javarosa.test.XFormsElement.title;
 public class RandomizeTypesTest {
     @Test
     public void stringNumberSeedConvertsWhenUsedInNodesetExpression() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -64,7 +64,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void stringNumberSeedConvertsWhenUsedInCalculate() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -97,7 +97,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void stringTextSeedConvertsWhenUsedInNodesetExpression() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -129,7 +129,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void stringTextSeedConvertsWhenUsedInCalculate() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -159,7 +159,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void seedInRepeatIsEvaluatedForEachInstance() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -196,7 +196,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void seedFromArbitraryInputCanBeUsed() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Randomize non-numeric seed"),
                 model(
@@ -233,7 +233,7 @@ public class RandomizeTypesTest {
 
     @Test
     public void seed0FromNaNs() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Randomize non-numeric seed", html(
+        Scenario scenario = Scenario.init(html(
                 head(
                         title("Randomize non-numeric seed"),
                         model(

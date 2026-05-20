@@ -61,7 +61,7 @@ public class SameRefDifferentInstancesIssue449Test {
 
     @Test
     public void constraintsAreCorrectlyApplied_afterDeserialization() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Tree reference deserialization", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Tree reference deserialization"),
                 model(

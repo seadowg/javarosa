@@ -67,7 +67,7 @@ public class ExtractSignedTest {
     @Test
     public void whenNoArgs_throwsException() throws Exception {
         try {
-            Scenario.init("extract signed form", html(
+            Scenario.init(html(
                 head(
                     title("extract signed form"),
                     model(
@@ -171,7 +171,7 @@ public class ExtractSignedTest {
 
     @NotNull
     private static Scenario createScenario(String encodedContents, String encodedPublicKey) throws IOException, XFormParser.ParseException {
-        return Scenario.init("extract signed form", html(
+        return Scenario.init(html(
             head(
                 title("extract signed form"),
                 model(

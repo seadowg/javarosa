@@ -81,7 +81,7 @@ public class FormDefSerializationTest {
     }
 
     @Test public void serializeAndDeserializeFormWithDefaultAnswerInSelectQuestion_worksCorrectly() throws IOException, DeserializationException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Internal choices", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Internal choices"),
                 model(
@@ -107,7 +107,7 @@ public class FormDefSerializationTest {
     }
 
     private static Scenario getSimplestFormScenario() throws IOException, XFormParser.ParseException {
-        return Scenario.init("Simplest", html(
+        return Scenario.init(html(
             head(
                 title("Simplest"),
                 model(

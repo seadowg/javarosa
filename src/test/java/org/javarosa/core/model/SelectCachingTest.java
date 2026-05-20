@@ -26,7 +26,7 @@ public class SelectCachingTest {
 
     @Test
     public void eqChoiceFiltersAreOnlyEvaluatedOnceForRepeatedChoiceListEvaluations() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -61,7 +61,7 @@ public class SelectCachingTest {
 
     @Test
     public void andOfTwoEqChoiceFiltersAreOnlyEvaluatedOnceForRepeatedChoiceListEvaluations() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -96,7 +96,7 @@ public class SelectCachingTest {
 
     @Test
     public void andOfTwoEqChoiceFiltersIsNotConfusedWithOr() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -128,7 +128,7 @@ public class SelectCachingTest {
 
     @Test
     public void repeatedEqChoiceFiltersAreOnlyEvaluatedOnce_whileLiteralExpressionIsTheSame() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -166,7 +166,7 @@ public class SelectCachingTest {
 
     @Test
     public void repeatedCompChoiceFiltersAreOnlyEvaluatedOnce_whileLiteralExpressionIsTheSame() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -204,7 +204,7 @@ public class SelectCachingTest {
 
     @Test
     public void repeatedEqChoiceFiltersAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -243,7 +243,7 @@ public class SelectCachingTest {
 
     @Test
     public void nestedPredicatesAreOnlyEvaluatedOnceForAQuestionWhileTheFormStateIsStable() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -284,7 +284,7 @@ public class SelectCachingTest {
 
     @Test
     public void nestedPredicatesAreCorrectAfterFormStateChanges() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(
@@ -320,7 +320,7 @@ public class SelectCachingTest {
     //region repeats
     @Test
     public void eqChoiceFilter_inRepeat_onlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Select in repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select in repeat"),
                 model(
@@ -356,7 +356,7 @@ public class SelectCachingTest {
 
     @Test
     public void eqChoiceFiltersInRepeatsWithCurrentPathExpressionsAreOnlyEvaluatedOnce() throws Exception {
-        Scenario scenario = Scenario.init("Select in repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select in repeat"),
                 model(
@@ -395,7 +395,7 @@ public class SelectCachingTest {
 
     @Test
     public void eqChoiceFiltersForIntsWork() throws Exception {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

@@ -36,7 +36,7 @@ public class XFormSerializingVisitorTest {
             body(input("/data/text"))
         );
 
-        Scenario scenario = Scenario.init("Some form", formDef);
+        Scenario scenario = Scenario.init(formDef);
         scenario.next();
         scenario.answer("\uD83E\uDDDB");
 

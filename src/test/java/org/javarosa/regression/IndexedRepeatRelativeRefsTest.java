@@ -76,7 +76,7 @@ public class IndexedRepeatRelativeRefsTest {
 
     @Test
     public void indexed_repeat() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Some form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

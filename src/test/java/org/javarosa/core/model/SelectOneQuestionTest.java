@@ -29,7 +29,7 @@ public class SelectOneQuestionTest {
 
     @Test
     public void choiceIsSelectedWhenLiteralStringValueMatchesChoiceValue() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("String calculate", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("String calculate"),
                 model(
@@ -55,7 +55,7 @@ public class SelectOneQuestionTest {
 
     @Test
     public void choiceIsSelectedWhenLiteralIntegerValueMatchesChoiceValue() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Integer calculate", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Integer calculate"),
                 model(
@@ -81,7 +81,7 @@ public class SelectOneQuestionTest {
 
     @Test
     public void choiceIsSelectedWhenLiteralIntegerValueMatchesChoiceValue_afterDeserialization() throws IOException, XFormParser.ParseException, DeserializationException {
-        Scenario scenario = Scenario.init("Integer calculate", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Integer calculate"),
                 model(
@@ -107,7 +107,7 @@ public class SelectOneQuestionTest {
 
     @Test
     public void selectQuestionValueBlankWhenValueNotInChoices() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("String calculate", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("String calculate"),
                 model(

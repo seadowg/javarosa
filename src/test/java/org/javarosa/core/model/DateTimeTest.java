@@ -25,7 +25,7 @@ import static org.javarosa.test.XFormsElement.title;
 public class DateTimeTest {
     @Test
     public void timeQuestionReturnsTimeDataAnswer() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("DateTime form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Time form"),
                 model(
@@ -57,7 +57,7 @@ public class DateTimeTest {
 
     @Test
     public void dateQuestionReturnsDateDataAnswer() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("DateTime form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Date form"),
                 model(
@@ -89,7 +89,7 @@ public class DateTimeTest {
 
     @Test
     public void dateTimeQuestionReturnsDateTimeDataAnswer() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("DateTime form", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("DateTime form"),
                 model(

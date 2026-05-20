@@ -25,7 +25,7 @@ public class FormEntryControllerTest {
 
     @Test
     public void jumpToNewRepeatPrompt_whenInRepeat_jumpsToRepeatPrompt() throws Exception {
-        Scenario scenario = Scenario.init("repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("form"),
                 model(
@@ -63,7 +63,7 @@ public class FormEntryControllerTest {
 
     @Test
     public void jumpToNewRepeatPrompt_whenInOuterOfNestedRepeat_jumpsToOuterRepeatPrompt() throws Exception {
-        Scenario scenario = Scenario.init("nestedRepeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("form"),
                 model(
@@ -110,7 +110,7 @@ public class FormEntryControllerTest {
 
     @Test
     public void jumpToNewRepeatPrompt_whenInInnerOfNestedRepeat_jumpsToInnerRepeatPrompt() throws Exception {
-        Scenario scenario = Scenario.init("nestedRepeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("form"),
                 model(
@@ -160,7 +160,7 @@ public class FormEntryControllerTest {
 
     @Test
     public void jumpToNewRepeatPrompt_whenInGroupInRepeat_jumpsToRepeatPrompt() throws Exception {
-        Scenario scenario = Scenario.init("groupInRepeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("form"),
                 model(
@@ -203,7 +203,7 @@ public class FormEntryControllerTest {
 
     @Test
     public void jumpToNewRepeatPrompt_whenNotInRepeat_doesNothing() throws Exception {
-        Scenario scenario = Scenario.init("questionsOnly", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("form"),
                 model(

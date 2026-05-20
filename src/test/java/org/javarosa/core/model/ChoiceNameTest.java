@@ -76,7 +76,7 @@ public class ChoiceNameTest {
     // set yet, the choice list is empty. Setting the country does not automatically trigger re-computation of the choice list for the
     // city question. Instead, clients trigger a recomputation of the list when the list is displayed.
     @Test public void choiceNameCallWithDynamicChoicesAndPredicate_requiresExplicitDynamicChoicesRecomputation() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Dynamic Choices and Predicates", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Dynamic Choices and Predicates"),
                 model(
@@ -121,7 +121,7 @@ public class ChoiceNameTest {
     }
 
     @Test public void choiceNameCallWithIndexedRepeatAndStaticChoices_worksWithMultipleRepeats() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Static choices in repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Static choices in repeat"),
                 model(
@@ -155,7 +155,7 @@ public class ChoiceNameTest {
     }
 
     @Test public void choiceNameCallWithIndexedRepeatAndDynamicChoices_worksWithMultipleRepeats() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Dynamic choices in repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Dynamic choices in repeat"),
                 model(

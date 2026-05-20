@@ -56,7 +56,7 @@ public class DynamicSelectUpdateTest {
     // contents of those instances (item values, labels) can also change.
     @Test
     public void selectFromRepeat_whenRepeatAdded_updatesChoices() throws Exception {
-        Scenario scenario = Scenario.init("Select from repeat", getSelectFromRepeatForm());
+        Scenario scenario = Scenario.init(getSelectFromRepeatForm());
 
         scenario.answer("/data/repeat[1]/value","a");
         scenario.answer("/data/repeat[1]/label","A");
@@ -72,7 +72,7 @@ public class DynamicSelectUpdateTest {
 
     @Test
     public void selectFromRepeat_whenRepeatChanged_updatesChoices() throws Exception {
-        Scenario scenario = Scenario.init("Select from repeat", getSelectFromRepeatForm());
+        Scenario scenario = Scenario.init(getSelectFromRepeatForm());
 
         scenario.answer("/data/repeat[1]/value","a");
         scenario.answer("/data/repeat[1]/label","A");
@@ -88,7 +88,7 @@ public class DynamicSelectUpdateTest {
 
     @Test
     public void selectFromRepeat_whenRepeatRemoved_updatesChoices() throws Exception {
-        Scenario scenario = Scenario.init("Select from repeat", getSelectFromRepeatForm());
+        Scenario scenario = Scenario.init(getSelectFromRepeatForm());
 
         scenario.answer("/data/repeat[1]/value", "a");
         scenario.answer("/data/repeat[1]/label", "A");
@@ -101,7 +101,7 @@ public class DynamicSelectUpdateTest {
 
     @Test
     public void selectFromRepeat_withPredicate_whenPredicateTriggerChanges_updatesChoices() throws Exception {
-        Scenario scenario = Scenario.init("Select from repeat", getSelectFromRepeatForm("starts-with(value,current()/../filter)"));
+        Scenario scenario = Scenario.init(getSelectFromRepeatForm("starts-with(value,current()/../filter)"));
 
         scenario.answer("/data/repeat[1]/value", "a");
         scenario.answer("/data/repeat[1]/label", "A");
@@ -142,7 +142,7 @@ public class DynamicSelectUpdateTest {
     //region Multi-language
     @Test
     public void multilanguage() throws Exception {
-        Scenario scenario = Scenario.init("Multilingual dynamic select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Multilingual dynamic select"),
                 model(
@@ -186,7 +186,7 @@ public class DynamicSelectUpdateTest {
 
     @Test
     public void selectWithChangedTriggers_recomputesChoiceList() throws Exception {
-        Scenario scenario = Scenario.init("Select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select"),
                 model(
@@ -221,7 +221,7 @@ public class DynamicSelectUpdateTest {
 
     @Test
     public void selectWithRepeatAsTrigger_recomputesChoiceListAtEveryRequest() throws Exception {
-        Scenario scenario = Scenario.init("Select with repeat trigger", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat trigger"),
                 model(
@@ -257,7 +257,7 @@ public class DynamicSelectUpdateTest {
     // When a dynamic select is in a repeat, the itemsets for all repeat instances are represented by the same ItemsetBinding.
     @Test
     public void selectInRepeat_withRefToRepeatChildInPredicate_evaluatesChoiceListForEachRepeatInstance() throws Exception {
-        Scenario scenario = Scenario.init("Select in repeat", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select in repeat"),
                 model(

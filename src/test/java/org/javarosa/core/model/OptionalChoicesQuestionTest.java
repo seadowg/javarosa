@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.is;
 import static org.javarosa.core.test.AnswerDataMatchers.intAnswer;
 import static org.javarosa.test.BindBuilderXFormsElement.bind;
 import static org.javarosa.test.XFormsElement.body;
+import static org.javarosa.test.XFormsElement.data;
 import static org.javarosa.test.XFormsElement.head;
 import static org.javarosa.test.XFormsElement.html;
 import static org.javarosa.test.XFormsElement.instance;
@@ -20,13 +21,15 @@ import static org.javarosa.test.XFormsElement.title;
 public class OptionalChoicesQuestionTest {
     @Test
     public void answerIsPreservedWhenQuestionHasIncompleteItemsetChoices() throws Exception {
-        Scenario scenario = Scenario.init("range question with incomplete choices", html(
+        Scenario scenario = Scenario.init(html(
             head(
-                title("Range question with incomplete choices"),
+                title(),
                 model(
-                    mainInstance(t("data id=\"range-question-with-incomplete-choices\"",
-                        t("range")
-                    )),
+                    mainInstance(
+                        data(
+                            t("range")
+                        )
+                    ),
 
                     instance("ticks",
                         item(-2, "A"),
@@ -52,13 +55,15 @@ public class OptionalChoicesQuestionTest {
 
     @Test
     public void answerIsPreservedWhenQuestionHasIncompleteItemChoices() throws Exception {
-        Scenario scenario = Scenario.init("range question with incomplete choices", html(
+        Scenario scenario = Scenario.init(html(
             head(
-                title("Range question with incomplete choices"),
+                title(),
                 model(
-                    mainInstance(t("data id=\"range-question-with-incomplete-choices\"",
-                        t("range")
-                    )),
+                    mainInstance(
+                        data(
+                            t("range")
+                        )
+                    ),
                     bind("/data/range").type("int")
                 )),
             body(

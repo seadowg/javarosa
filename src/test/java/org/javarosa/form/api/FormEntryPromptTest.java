@@ -40,7 +40,7 @@ public class FormEntryPromptTest {
     //region Binding of select choice values to labels
     @Test
     public void getSelectItemText_onSelectionFromDynamicSelect_withoutTranslations_returnsLabelInnerText() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select"),
                 model(
@@ -69,7 +69,7 @@ public class FormEntryPromptTest {
 
     @Test
     public void getSelectItemText_onSelectionFromDynamicSelect_withTranslations_returnsCorrectTranslation() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Multilingual dynamic select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Multilingual dynamic select"),
                 model(
@@ -114,7 +114,7 @@ public class FormEntryPromptTest {
 
     @Test
     public void getSelectItemText_onSelectionsInRepeatInstances_returnsLabelInnerText() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Select", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Select"),
                 model(

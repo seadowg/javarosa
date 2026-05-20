@@ -48,7 +48,7 @@ public class EvaluationContextExpandReferenceTest {
 
     @BeforeClass
     public static void setUp() throws IOException, XFormParser.ParseException {
-        scenario = Scenario.init("Some form", html(
+        scenario = Scenario.init(html(
             head(
                 title("Some form"),
                 model(

@@ -84,7 +84,7 @@ public class FormDefTest {
             body(input("/data/a"))
         );
 
-        Scenario scenario = Scenario.init("Some form", formDef);
+        Scenario scenario = Scenario.init(formDef);
 
         scenario.next();
         Scenario.AnswerResult result = scenario.answer("00000");
@@ -104,7 +104,7 @@ public class FormDefTest {
     //region Repeat relevance
     @Test
     public void repeatRelevanceChanges_whenDependentValuesOfRelevanceExpressionChange() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Repeat relevance - dynamic expression", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance - dynamic expression"),
                 model(
@@ -133,7 +133,7 @@ public class FormDefTest {
 
     @Test
     public void repeatIsIrrelevant_whenRelevanceSetToFalse() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Repeat relevance - false()", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance - false()"),
                 model(
@@ -155,7 +155,7 @@ public class FormDefTest {
 
     @Test
     public void repeatRelevanceChanges_whenDependentValuesOfGrandparentRelevanceExpressionChange() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Repeat relevance - dynamic expression", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance - dynamic expression"),
                 model(
@@ -188,7 +188,7 @@ public class FormDefTest {
 
     @Test
     public void repeatIsIrrelevant_whenGrandparentRelevanceSetToFalse() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Repeat relevance - false()", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Repeat relevance - false()"),
                 model(
@@ -215,7 +215,7 @@ public class FormDefTest {
 
     @Test
     public void nestedRepeatRelevance_updatesBasedOnParentPosition() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested repeat relevance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested repeat relevance"),
                 model(
@@ -275,7 +275,7 @@ public class FormDefTest {
 
     @Test
     public void innerRepeatGroupIsIrrelevant_whenItsParentRepeatGroupDoesNotExist() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested repeat relevance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested repeat relevance"),
                 model(
@@ -304,7 +304,7 @@ public class FormDefTest {
 
     @Test
     public void canCreateRepeat_returnsFalse_when_repeatCountSetButTheGroupItBelongsToDoesNotExist() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("Nested repeat relevance", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("Nested repeat relevance"),
                 model(
@@ -341,7 +341,7 @@ public class FormDefTest {
 
     @Test
     public void fillTemplateString_resolvesRelativeReferences() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("<output> with relative ref", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("output with relative ref"),
                 model(
@@ -377,7 +377,7 @@ public class FormDefTest {
 
     @Test
     public void fillTemplateString_resolvesRelativeReferences_inItext() throws IOException, XFormParser.ParseException {
-        Scenario scenario = Scenario.init("<output> with relative ref in translation", html(
+        Scenario scenario = Scenario.init(html(
             head(
                 title("output with relative ref in translation"),
                 model(
@@ -417,7 +417,7 @@ public class FormDefTest {
 
     @Test
     public void canAddFunctionHandlersBeforeInitialize() throws Exception {
-        FormDef formDef = Scenario.createFormDef("custom-func-form", html(
+        FormDef formDef = Scenario.createFormDef(html(
             head(
                 title("custom-func-form"),
                 model(
