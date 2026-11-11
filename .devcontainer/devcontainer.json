@@ -1,0 +1,6 @@
+{
+    "name": "javarosa",
+    "build": {
+        "dockerfile": "Dockerfile"
+    }
+}
